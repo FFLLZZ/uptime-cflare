@@ -1,12 +1,12 @@
 const pageConfig = {
   // Title for your status page
-  title: "AM科技's Status Page",
+  title: "数字套利 •「AM科技」's Status Page",
   // Links shown at the header of your status page, could set `highlight` to `true`
   links: [
-    { link: 'https://am.809098.xyz', label: '个人博客', highlight: true },
-    { link: 'https://youtube.com/@AM_CLUB', label: 'AM科技' },
-    { link: 'https://github.com/amclubs', label: 'GitHub' },
+    { link: 'https://amclubss.com', label: '博客', highlight: true },
     { link: 'https://809098.xyz', label: 'Blog'},
+    { link: 'https://youtube.com/@AM_CLUBS', label: 'YouTube' },
+    { link: 'https://github.com/amclubs', label: 'GitHub' }, 
   ],
 }
 
@@ -22,7 +22,7 @@ const workerConfig = {
       // `id` should be unique, history will be kept if the `id` remains constant
       id: 'am.809098.xyz',
       // `name` is used at status page and callback message
-      name: '个人博客',
+      name: '博客',
       // `method` should be a valid HTTP Method
       method: 'GET',
       // `target` is a valid URL

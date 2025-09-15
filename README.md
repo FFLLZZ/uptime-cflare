@@ -9,10 +9,47 @@ A more advanced, serverless, and free uptime monitoring & status page solution, 
 
 # 视频教程
 - [点击进入视频教程](https://youtu.be/X03S2HxnniM)
-- [免费域名视频教程](https://www.youtube.com/playlist?list=PLGVQi7TjHKXZGODTvB8DEervrmHANQ1AR)
-- [免费节点Cloudflare视频教程](https://www.youtube.com/playlist?list=PLGVQi7TjHKXbrY0Pk8gm3T7m8MZ-InquF)
+
 - [serv00所有视频教程](https://www.youtube.com/playlist?list=PLGVQi7TjHKXaVlrHP9Du61CaEThYCQaiY)
+
+
+创建Cloudflare TOKEN 用于github部署用
+创建链接：https://dash.cloudflare.com/profile/api-tokens
+点击创建令牌,选择 编辑 Cloudflare Workers 模板,然后将 帐户资源 设置为自己的账户。 区域资源 设置为 所有区域
+
+部署uptime-flare
+
+设置 SECRET
+① 点击 settings -> secrets and variables -> new repo secret
+② Name 的值是 CLOUDFLARE_API_TOKEN
+③ Secret 的值是在CF获得的 Token 值
+
+3、修改 uptime.config.ts 文件
+① 修改 PageConfig 配置里的Links数组,这是监控首页的站点显示信,不是监控的站点,如
+
+links: [
+  { link: 'https://xxx.809098.xyz', label: '个人博客' },
+  { link: 'https://888888.xyz', label: 'Blog', highlight: true },
+]
+② 修改 WorkConfig 配置,里面是要监控的站点
+
+monitors: [
+    {
+      id: 'xxxx.809098.xyz',
+      name: '个人博客',
+      method: 'GET',
+      target: 'https://xxxxx.809098.xyz',
+      tooltip: 'My production server monitor',
+      statusPageLink: 'https://xxxxx.809098.xyz',
+      timeout: 10000,
+    },
+],	
+③ 在github的actions看部署成功,就完成了部署
+④ 在 Cloudflare 里就可以看到一个page项目 uptimeflare ,可以自己绑定域名,用域名来访问
   
+
+
+
 ## ⭐Features
 - Open-source, easy to deploy (in under 10 minutes, no local tools required), and free
 - Monitoring capabilities

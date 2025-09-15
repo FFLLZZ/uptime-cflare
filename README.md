@@ -14,23 +14,32 @@ A more advanced, serverless, and free uptime monitoring & status page solution, 
 
 
 创建Cloudflare TOKEN 用于github部署用
-创建链接：https://dash.cloudflare.com/profile/api-tokens
+
+创建链接： https://dash.cloudflare.com/profile/api-tokens
+
+
 点击创建令牌,选择 编辑 Cloudflare Workers 模板,然后将 帐户资源 设置为自己的账户。 区域资源 设置为 所有区域
 
 部署uptime-flare
 
 设置 SECRET
+
 ① 点击 settings -> secrets and variables -> new repo secret
+
 ② Name 的值是 CLOUDFLARE_API_TOKEN
+
 ③ Secret 的值是在CF获得的 Token 值
 
+
 3、修改 uptime.config.ts 文件
+
 ① 修改 PageConfig 配置里的Links数组,这是监控首页的站点显示信,不是监控的站点,如
 
 links: [
   { link: 'https://xxx.809098.xyz', label: '个人博客' },
   { link: 'https://888888.xyz', label: 'Blog', highlight: true },
 ]
+
 ② 修改 WorkConfig 配置,里面是要监控的站点
 
 monitors: [
@@ -44,7 +53,9 @@ monitors: [
       timeout: 10000,
     },
 ],	
+
 ③ 在github的actions看部署成功,就完成了部署
+
 ④ 在 Cloudflare 里就可以看到一个page项目 uptimeflare ,可以自己绑定域名,用域名来访问
   
 
